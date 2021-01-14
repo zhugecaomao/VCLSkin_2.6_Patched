@@ -1,0 +1,15 @@
+uses winskindlg;
+
+Type
+TMySkinManage=class(TSkinManage);
+
+procedure TForm1.BitBtn2Click(Sender: TObject);
+var
+P: Pchar;
+begin
+P := Pointer(TMySkinManage(SkinManager).FindSkinForm(Handle));
+if P = nil then exit;
+P := P+104; //D5的话请将104改为88，未经测试
+Pstring(P)^ := Edit1.Text;
+Caption := Edit1.Text;
+end;
